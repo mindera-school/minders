@@ -1,29 +1,38 @@
-# README #
+# create-svelte
 
-This README would normally document whatever steps are necessary to get your application up and running.
+Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
 
-### What is this repository for? ###
+## Creating a project
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+If you're seeing this, you've probably already done this step. Congrats!
 
-### How do I get set up? ###
+```bash
+# create a new project in the current directory
+npm create svelte@latest
 
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
+# create a new project in my-app
+npm create svelte@latest my-app
+```
 
-### Contribution guidelines ###
+## Developing
 
-* Writing tests
-* Code review
-* Other guidelines
+Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
 
-### Who do I talk to? ###
+```bash
+npm run dev
 
-* Repo owner or admin
-* Other community or team contact
+# or start the server and open the app in a new browser tab
+npm run dev -- --open
+```
+
+## Building
+
+To create a production version of your app:
+
+```bash
+npm run build
+```
+
+You can preview the production build with `npm run preview`.
+
+> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
