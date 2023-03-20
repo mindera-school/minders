@@ -1,49 +1,52 @@
 <script>
-  import svelteLogo from "./assets/svelte.svg";
-  import viteLogo from "./assets/vite.svg";
   import Minder from "./lib/Minder.svelte";
+  import Modal from "./lib/Modal.svelte";
+  import Minders from "./Minders.js";
+
+  let openMinders = null;
+  function onExpand(name) {
+    openMinders = Minders.filter((e) => e.find((m) => m.name === name))[0];
+  }
+
+  function onClose() {
+    openMinders = null;
+  }
 </script>
 
 <main>
-  <div>
-    <a href="https://vitejs.dev" target="_blank" rel="noreferrer">
-      <img src={viteLogo} class="logo" alt="Vite Logo" />
-    </a>
-    <a href="https://svelte.dev" target="_blank" rel="noreferrer">
-      <img src={svelteLogo} class="logo svelte" alt="Svelte Logo" />
-    </a>
-  </div>
-  <h1>Vite + Svelte</h1>
-
-  <div class="card">
-    <Minder />
+  <h1>Minders</h1>
+  <div class="minders">
+    {#each Minders as minder}
+      <Minder name={minder[0].name} src={minder[0].src} {onExpand} />
+    {/each}
   </div>
 
-  <p>
-    Check out <a
-      href="https://github.com/sveltejs/kit#readme"
-      target="_blank"
-      rel="noreferrer">SvelteKit</a
-    >, the official Svelte app framework powered by Vite!
-  </p>
-
-  <p class="read-the-docs">Click on the Vite and Svelte logos to learn more</p>
+  {#if openMinders}
+    <Modal {openMinders} {onClose} />
+  {/if}
 </main>
 
 <style lang="scss">
-  .logo {
-    height: 6em;
-    padding: 1.5em;
-    will-change: filter;
-    transition: filter 300ms;
-    &:hover {
-      filter: drop-shadow(0 0 2em #646cffaa);
+  @use "./styles/colors";
+  main {
+    min-width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+    background-color: colors.$grey;
+
+    h1 {
+      text-align: center;
+      color: colors.$yellow;
     }
-    &.svelte:hover {
-      filter: drop-shadow(0 0 2em #ff3e00aa);
+    div.minders {
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
     }
-  }
-  .read-the-docs {
-    color: #888;
   }
 </style>
