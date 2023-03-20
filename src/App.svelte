@@ -1,5 +1,5 @@
 <script>
-  import Minder from "./lib/Minder.svelte";
+  import CardMinder from "./lib/CardMinder.svelte";
   import Modal from "./lib/Modal.svelte";
   import Minders from "./Minders.js";
 
@@ -17,7 +17,12 @@
   <h1>Minders</h1>
   <div class="minders">
     {#each Minders as minder}
-      <Minder name={minder[0].name} src={minder[0].src} {onExpand} />
+      <CardMinder
+        name={minder[0].name}
+        src={minder[0].src}
+        {onExpand}
+        count={minder.length}
+      />
     {/each}
   </div>
 

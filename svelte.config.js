@@ -1,7 +1,15 @@
-import { vitePreprocess } from "@sveltejs/vite-plugin-svelte";
+import { svelte, vitePreprocess } from "@sveltejs/vite-plugin-svelte";
+import preprocess from "svelte-preprocess";
+import { defineConfig } from "vite";
 
-export default {
-  // Consult https://svelte.dev/docs#compile-time-svelte-preprocess
-  // for more information about preprocessors
+// https://vitejs.dev/config/
+export default defineConfig({
   preprocess: vitePreprocess(),
-};
+  plugins: [svelte(), preprocess()],
+  base: "./",
+  build: {
+    // Do not inline images and assets to avoid the phaser error
+    // "Local data URIs are not supported"
+    assetsInlineLimit: 0,
+  },
+});

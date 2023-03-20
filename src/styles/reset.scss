@@ -1,4 +1,32 @@
+@use "./colors";
+
 #app {
   min-width: 100vw;
   min-height: 100vh;
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 6px;
+  font-size: 20px;
+  border: 1px solid colors.$green;
+  border-radius: 4px;
+  background-color: colors.$blue;
+  transition: 1s;
+
+  &.close {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+  }
+
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+  }
 }
