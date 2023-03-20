@@ -3,6 +3,9 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "author": "mindera-school",
+  "license": "MIT",
+  "homepage": "https://mindera-school.github.io/minders/",
   "scripts": {
     "start": "vite",
     "build": "vite build",
@@ -23,5 +26,13 @@
     "svelte": "^3.55.1",
     "svelte-preprocess": "^5.0.2",
     "vite": "^4.2.0"
+  },
+  "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mindera-school/Minders.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mindera-school/Minders/issues"
   }
 }
